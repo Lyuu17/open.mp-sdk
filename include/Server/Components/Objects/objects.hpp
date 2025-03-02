@@ -215,6 +215,12 @@ struct IObject : public IBaseObject
 	/// Streams out object for a player
 	virtual void streamOutForPlayer(IPlayer& player) = 0;
 
+	/// Checks if object is always streamed in
+	virtual bool isAlwaysStreamedIn() const = 0;
+
+	/// Set whether the object is always streamed in
+	virtual void setAlwaysStreamedIn(bool alwaysStreamedIn) = 0;
+
 	/// Attach the object to a player
 	virtual void attachToPlayer(IPlayer& player, Vector3 offset, Vector3 rotation) = 0;
 
