@@ -206,6 +206,15 @@ struct IBaseObject : public IExtensible, public IEntity
 /// An object interface
 struct IObject : public IBaseObject
 {
+	/// Checks if object is streamed for a player
+	virtual bool isStreamedInForPlayer(const IPlayer& player) const = 0;
+
+	/// Streams object for a player
+	virtual void streamInForPlayer(IPlayer& player) = 0;
+
+	/// Streams out object for a player
+	virtual void streamOutForPlayer(IPlayer& player) = 0;
+
 	/// Attach the object to a player
 	virtual void attachToPlayer(IPlayer& player, Vector3 offset, Vector3 rotation) = 0;
 
