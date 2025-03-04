@@ -275,6 +275,21 @@ struct IPlayerObjectData : public IExtension, public IPool<IPlayerObject>
 {
 	PROVIDE_EXT_UID(PlayerObjectData_UID);
 
+	/// Get the ID of this zone as used internally (i.e. sent to the client).
+	virtual int toClientID(int real) const = 0;
+
+	/// Get the ID of this zone as used in the SDK.
+	virtual int fromClientID(int legacy) const = 0;
+
+	/// Release the ID used on the client.
+	virtual void releaseClientID(int legacy) = 0;
+
+	/// Return an ID not yet used on the client to represent this object.
+	virtual int reserveClientID() = 0;
+
+	/// Assign a full ID to the legacy ID reserved earlier.
+	virtual void setClientID(int legacy, int real) = 0;
+
 	/// Create a new player object
 	/// @return A pointer if succeeded or nullptr on failure
 	virtual IPlayerObject* create(int modelID, Vector3 position, Vector3 rotation, float drawDist = 0.f) = 0;
